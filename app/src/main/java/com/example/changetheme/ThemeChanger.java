@@ -2,6 +2,7 @@ package com.example.changetheme;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ public class ThemeChanger extends AppCompatActivity{
         setContentView(R.layout.activity_settings);
 
         tW = findViewById(R.id.textView);
+        tW.setText(sharedPref.getString("THEME_NAME", ""));
 
         findViewById(R.id.button_accept).setOnClickListener(buttonAcceprListener);
         findViewById(R.id.button).setOnClickListener(buttonLightListener);
@@ -34,6 +36,7 @@ public class ThemeChanger extends AppCompatActivity{
         SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt("THEME", STANDART);
+        editor.putString("THEME_NAME", "Стандартная");
         editor.commit();
         recreate();
     };
@@ -42,6 +45,7 @@ public class ThemeChanger extends AppCompatActivity{
         SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt("THEME", ALTERNATIVE);
+        editor.putString("THEME_NAME", "Альтернативная");
         editor.commit();
         recreate();
     };
