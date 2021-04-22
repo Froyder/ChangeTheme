@@ -22,9 +22,8 @@
         android:text="@string/change_button" />
 
     <TextView
-        android:id="@+id/textHello"
+        android:id="@+id/textTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size"
-        android:text="@string/theme_standart"/>
+        android:textSize="@dimen/text_size"/>
 </LinearLayout>

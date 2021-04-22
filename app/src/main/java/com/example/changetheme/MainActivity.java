@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int REQUEST_CODE_SETTING_ACTIVITY = 99;
+    private static final int REQUEST_THEME = 99;
     private static final int STANDART = R.style.Theme_Main;
     private static final int ALTERNATIVE = R.style.Theme_Alternative;
 
@@ -27,12 +29,28 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView () {
         findViewById(R.id.changeButton).setOnClickListener(changeButtonListener);
+        findViewById(R.id.textTheme);
     }
 
     public View.OnClickListener changeButtonListener = v -> {
-        Intent intent= new Intent(MainActivity.this, ThemeChanger.class);
+        Intent intent = new Intent(MainActivity.this, ThemeChanger.class);
         intent.putExtra("THEME", STANDART);
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_THEME);
     };
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode != REQUEST_THEME) {
+            super.onActivityResult(requestCode, resultCode, data);
+            return;
+        }
+
+        if (resultCode == RESULT_OK){
+            data.getParcelableExtra("THEME_CHANGE");
+            SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt("THEME", data.getIntExtra("THEME_CHANGE", STANDART));
+            editor.apply();
+            recreate();
+        }
+    }
 }
