@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ChangeTheme</string>
+    <string name="main_text">Нажмите на кнопку, чтобы сменить тему приложения</string>
+    <string name="change_button">СМЕНИТЬ ТЕМУ</string>
+    <string name="theme_standart">Установлена стандартная тема</string>
+    <string name="theme_current">Текущая тема: </string>
+</resources>
