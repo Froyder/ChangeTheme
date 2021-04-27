@@ -43,7 +43,7 @@ public class ThemeChanger extends AppCompatActivity{
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt("THEME", STANDART);
         editor.putString("THEME_NAME", "Стандартная");
-        editor.commit();
+        editor.apply();
         recreate();
     };
 
@@ -52,7 +52,7 @@ public class ThemeChanger extends AppCompatActivity{
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt("THEME", ALTERNATIVE);
         editor.putString("THEME_NAME", "Альтернативная");
-        editor.commit();
+        editor.apply();
         recreate();
     };
 
